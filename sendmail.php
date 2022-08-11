@@ -11,9 +11,9 @@
 	$mail->IsHTML(true);
 	
 	// от кого письмо
-	$mail->setForm('info@fls.guru', 'Фрилансер по жизни');
+	$mail->setForm('alecsandrgladkiy@gmail.com', 'Фрилансер по жизни');
 	// кому отправить>
-	$mail->addAddress('code@fls.guru');
+	$mail->addAddress('alexair.g@yandex.ru');
 	// тема письма
 	$mail->Subject = 'Привет, это фрилансер по жизни';
 
