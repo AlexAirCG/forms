@@ -19,33 +19,33 @@
 
 	// пол
 	$hand = "Мужской";
-	if($_POST['hand'] == "left") {
+	if ($_POST['hand'] == "left") {
 		$hand = "Женский";
 	}
 
 	// тело письма
 	$body = '<h1>встречайте супер письмо</h1>';
 
-	if(trim(!empty($_POST['name']))) {
+	if (trim(!empty($_POST['name']))) {
 		$body.='<p><strong>Имя:</strong> '.$_POST['name'].'</p>';
 	}
-	if(trim(!empty($_POST['email']))) {
+	if (trim(!empty($_POST['email']))) {
 		$body.='<p><strong>E-mail:</strong> '.$_POST['email'].'</p>';
 	}
-	if(trim(!empty($_POST['hand']))) {
+	if (trim(!empty($_POST['hand']))) {
 		$body.='<p><strong>Пол:</strong> '.$hand.'</p>';
 	}
-	if(trim(!empty($_POST['age']))) {
+	if (trim(!empty($_POST['age']))) {
 		$body.='<p><strong>Возраст:</strong> '.$_POST['age'].'</p>';
 	}
-	if(trim(!empty($_POST['message']))) {
+	if (trim(!empty($_POST['message']))) {
 		$body.='<p><strong>Сообщение:</strong> '.$_POST['message'].'</p>';
 	}
 
 	// прикрепить файлы
-	if(!empty($_FILES['image']['tmp_name'])) {
+	if (!empty($_FILES['image']['tmp_name'])) {
 		// путь загрузки файла
-		$filePath = __DIR__ . "/files/" . $_FILES['image']['tmp_name'];
+		$filePath = __DIR__ . "/files/" . $_FILES['image']['name'];
 		// грузим файл
 		if(copy($_FILES['image']['tmp_name'], $filePath)) {
 			$fileAttach = $filePath;
@@ -57,7 +57,7 @@
 	$mail->Body = $body;
 
 	// отправляем
-	if(!$mail->send()) {
+	if (!$mail->send()) {
 		$message = 'Ошибка';
 	}else{
 		$message = 'Данные отправлены!';
